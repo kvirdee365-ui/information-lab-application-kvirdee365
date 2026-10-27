@@ -76,8 +76,8 @@ The main components are `src/collect.py`, `src/transform.py`, `src/validate.py`,
 Clone the repository:
 
 ```bash
-git clone <your-github-repository-url>
-cd tfl-event-travel-monitor
+git clone https://github.com/kvirdee365-ui/information-lab-application-kvirdee365.git
+cd information-lab-application-kvirdee365
 ```
 
 Create and activate a virtual environment.
