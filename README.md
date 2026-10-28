@@ -114,10 +114,20 @@ A representative raw JSON response is included in the repository so the original
 
 
 ### Run the pipeline
+To collect fresh data from the TfL API, transform and validate it, compare it with an earlier snapshot, and load the observations into DuckDB, run:
 
 ```bash
 python -m src.pipeline
 ```
+### Run using the committed raw data
+
+A representative raw JSON response is included in `data/raw/`. To run the transformation, validation, comparison and loading stages using this saved snapshot instead of making a new API request, run:
+
+```powershell
+python -m src.pipeline --snapshot data/raw/tube_status_20261027T163831Z.json
+```
+
+This allows the downstream pipeline stages to be demonstrated using the committed input data without requiring a live TfL API request. If no earlier snapshot is available, the comparison stage will report this and continue.
 
 This retrieves a new snapshot, transforms and validates the data, compares it with an earlier snapshot if one is available, and loads the observations into DuckDB.
 
