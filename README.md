@@ -1,5 +1,15 @@
 # TfL Event Travel Monitor
 
+## About Me
+
+I'm an Aerospace Engineering graduate with a strong interest in problem-solving, technology and understanding how data can be used to make better decisions. Through my degree and engineering projects, I've developed an appreciation for breaking down complex problems, working systematically and using evidence to understand results.
+
+I'm particularly interested in data engineering because it combines logical problem-solving with building practical solutions using code and digital tools. I enjoy figuring out how things work, exploring data and turning ideas into something tangible. Building this project has given me the opportunity to explore the data engineering process in practice, from retrieving data through an API to transforming, validating and storing it, before presenting the results in an interactive dashboard.
+
+I'm applying to The Information Lab's Data School because I want to develop these skills further in a practical environment and learn how data solutions are used to solve real business problems. What particularly appeals to me is the structured pathway the programme offers, from the initial four-month training period through to the ongoing support and community available to alumni. The opportunity to develop new technical skills through focused training while earning, and then continue learning as part of a wider professional community, makes the Data School especially attractive to me. I'm also drawn to the consultancy aspect, as I'd like to understand the challenges businesses face and help deliver practical solutions that support better decisions.
+
+Although my background is in aerospace engineering, I'm keen to apply my analytical mindset in a broader range of industries. I'm excited by the opportunity to learn from experienced consultants, develop my technical skills and grow into a role that combines technology, problem-solving and working with clients.
+
 ## 1. What I built and who for
 
 I built a Python data pipeline and interactive dashboard that monitors reported London Underground service statuses using the TfL Unified API.
