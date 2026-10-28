@@ -1,4 +1,5 @@
 
+import argparse
 from pathlib import Path
 
 from src.collect import collect_tube_status
@@ -8,11 +9,22 @@ from src.compare import compare_snapshots
 from src.database import initialise_database, store_observations
 
 
-def run_pipeline():
-    """Run the end-to-end TfL status data pipeline."""
+def run_pipeline(snapshot_path=None):
+    """Run the pipeline using live TfL data or a saved JSON snapshot."""
 
-    print("\n=== 1. Collect ===")
-    current_snapshot = collect_tube_status()
+    if snapshot_path is None:
+        print("\n=== 1. Collect ===")
+        current_snapshot = collect_tube_status()
+    else:
+        current_snapshot = Path(snapshot_path)
+
+        if not current_snapshot.is_file():
+            raise FileNotFoundError(
+                f"Snapshot not found: {current_snapshot}"
+            )
+
+        print("\n=== 1. Use saved snapshot ===")
+        print(f"Using raw data from: {current_snapshot}")
 
     print("\n=== 2. Transform ===")
     current_df = transform_snapshot(current_snapshot)
@@ -35,6 +47,7 @@ def run_pipeline():
         path
         for path in raw_dir.glob("tube_status_*.json")
         if path != current_snapshot
+        and path.name < current_snapshot.name
     )
 
     if previous_snapshots:
@@ -47,7 +60,7 @@ def run_pipeline():
         print(f"Current snapshot:  {current_snapshot.name}")
         print(comparison.to_string(index=False))
     else:
-        print("No previous snapshot available for comparison.")
+        print("No earlier snapshot available for comparison.")
 
     print("\n=== 5. Load ===")
     initialise_database()
@@ -64,4 +77,13 @@ def run_pipeline():
 
 
 if __name__ == "__main__":
-    run_pipeline()
+    parser = argparse.ArgumentParser(
+        description="Run the TfL status data pipeline."
+    )
+    parser.add_argument(
+        "--snapshot",
+        help="Use a saved JSON snapshot instead of fetching live data.",
+    )
+    args = parser.parse_args()
+
+    run_pipeline(snapshot_path=args.snapshot)
