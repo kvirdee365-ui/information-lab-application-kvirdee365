@@ -13,3 +13,8 @@ __pycache__/
 # Locally collected data
 data/*
 !data/.gitkeep
+
+# Allow one representative raw TfL API response to be committed
+!data/raw/
+data/raw/*
+!data/raw/tube_status_20261027T163831Z.json

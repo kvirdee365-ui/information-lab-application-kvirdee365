@@ -102,6 +102,17 @@ Install dependencies:
 python -m pip install -r requirements.txt
 ```
 
+### Raw data
+
+The raw input data comes from the TfL Unified API, specifically the Tube line status endpoint: https://api.tfl.gov.uk/Line/Mode/tube/Status
+
+The API returns a JSON response containing the reported status of London Underground lines, including line identifiers, status descriptions and any available disruption details.
+
+When the pipeline runs, the API response is saved as a timestamped JSON snapshot in `data/raw/`. This is the raw input data, retained before transformation and validation. The pipeline then transforms the snapshot into structured records, validates the data and loads valid observations into DuckDB.
+
+A representative raw JSON response is included in the repository so the original input data can be inspected and used independently of a new API request.
+
+
 ### Run the pipeline
 
 ```bash
